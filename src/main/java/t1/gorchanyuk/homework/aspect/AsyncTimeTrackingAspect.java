@@ -32,7 +32,7 @@ public class AsyncTimeTrackingAspect {
     }
 
     @Around("getAnnotationTrackAsyncTime()")
-    public Object aroundTrackAsyncTimeAspect(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object aroundTrackAsyncTimeAspect(ProceedingJoinPoint joinPoint) {
         return CompletableFuture.runAsync(() -> {
             try {
                 long startTime = System.currentTimeMillis();

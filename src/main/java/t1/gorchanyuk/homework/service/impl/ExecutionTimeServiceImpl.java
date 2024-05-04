@@ -5,16 +5,12 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import t1.gorchanyuk.homework.dto.ExecutionTimeDto;
-import t1.gorchanyuk.homework.dto.Statistics;
 import t1.gorchanyuk.homework.entity.ExecutionTime;
 import t1.gorchanyuk.homework.entity.Method;
 import t1.gorchanyuk.homework.mapper.ExecutionTimeMapper;
 import t1.gorchanyuk.homework.repository.ExecutionTimeRepository;
 import t1.gorchanyuk.homework.service.ExecutionTimeService;
 import t1.gorchanyuk.homework.service.MethodService;
-import t1.gorchanyuk.homework.util.CalculateStatistic;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

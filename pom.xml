@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>t1.gorchanyuk</groupId>
-    <artifactId>homeWork</artifactId>
+    <artifactId>timeTracking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>homeWork</name>
-    <description>homeWork</description>
+    <name>timeTracking</name>
+    <description>timeTracking</description>
     <properties>
         <java.version>17</java.version>
         <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
@@ -31,7 +31,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -74,6 +73,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <finalName>time-tracking-exec</finalName>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

@@ -21,18 +21,20 @@ public interface StatisticsControllerApi {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Получение общей статистики",
-            description = "Позволяет получить статистику для методов помеченных аннотацией : \n" +
-                    "1)  @TrackTime - если значение параметра async = false\n" +
-                    "2)  @TrackAsyncTime - если значение параметра async = true")
+            description = """
+                    Позволяет получить статистику для методов помеченных аннотацией :\s
+                    1)  @TrackTime - если значение параметра async = false
+                    2)  @TrackAsyncTime - если значение параметра async = true""")
     ResponseEntity<Statistics> getStatisticsByAsyncStatus(@Parameter(description = "Параметр для указания типа искомой статистики")
                                                           @RequestParam(required = false, defaultValue = "false")
                                                           boolean async);
 
     @GetMapping(value = "/group/{group}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Получение статистики конкретной группы",
-            description = "Позволяет получить статистику для методов группы помеченных аннотацией: \n" +
-                    "1) @TrackTime - если значение параметра async = false\n" +
-                    "2) @TrackAsyncTime - если значение параметра async = true")
+            description = """
+                    Позволяет получить статистику для методов группы помеченных аннотацией:\s
+                    1) @TrackTime - если значение параметра async = false
+                    2) @TrackAsyncTime - если значение параметра async = true""")
     ResponseEntity<Statistics> getStatisticsByGroup(@Parameter(description = "Параметр для указания типа искомой статистики")
                                                     @RequestParam(required = false, defaultValue = "false")
                                                     boolean async,

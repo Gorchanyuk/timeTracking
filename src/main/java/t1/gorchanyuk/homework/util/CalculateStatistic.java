@@ -18,18 +18,20 @@ public class CalculateStatistic {
         long min = executionTimes.stream().mapToLong(ExecutionTime::getExecutionTime).min().orElse(0);
         long max = executionTimes.stream().mapToLong(ExecutionTime::getExecutionTime).max().orElse(0);
         double average = (double) sum / executionTimes.size();
-        double errorPercent = calculateErrorPercentage(executionTimes);
+        double errorPercent = calculateSuccessfullyPercentage(executionTimes);
+        long countWorks = executionTimes.size();
 
         return Statistics.builder()
                 .averageExecutionTime(average)
                 .minExecutionTime(min)
                 .maxExecutionTime(max)
-                .errorPercent(errorPercent)
+                .successfullyPercent(errorPercent)
+                .countWorks(countWorks)
                 .build();
     }
 
-    private double calculateErrorPercentage(List<ExecutionTime> executionTimes) {
-        int successfulExecutions = (int) executionTimes.stream()
+    private double calculateSuccessfullyPercentage(List<ExecutionTime> executionTimes) {
+        int successfullyExecutions = (int) executionTimes.stream()
                 .filter(ExecutionTime::isSuccessfully)
                 .count();
         int totalExecutions = executionTimes.size();
@@ -38,6 +40,6 @@ public class CalculateStatistic {
             return 0; // Если нет выполнений, коэффициент ошибки равен 0
         }
 
-        return (double) (totalExecutions - successfulExecutions) / totalExecutions * 100;
+        return (double) successfullyExecutions / totalExecutions * 100;
     }
 }

@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  time_tracking:
+    image: 'time_tracking:latest'
+    build:
+      context: .
+
+    container_name: gorchanyuk_time_tracking
+    working_dir: /usr/src/myapp
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/t1
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+
+  database:
+    container_name: database
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: t1
+    ports:
+      - "5433:5432"
+

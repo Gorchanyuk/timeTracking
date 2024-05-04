@@ -14,11 +14,14 @@ public class Statistics {
     private double averageExecutionTime; //Среднее время выполнения
 
     @Schema(description = "Минимальное время выполнения работы методом (методами)")
-    private long minExecutionTime;  //Минимальное время выполнения
+    private long minExecutionTime;      //Минимальное время выполнения
 
     @Schema(description = "Максимальное время выполнения работы методом (методами)")
-    private long maxExecutionTime;  //Максимальное время выполнения
+    private long maxExecutionTime;      //Максимальное время выполнения
 
-    @Schema(description = "Процент завершения работы метода (методов) ошибкой")
-    private double errorPercent;       //Процент завершения с ошибкой
+    @Schema(description = "Процент успешного завершения работы метода (методов)")
+    private double successfullyPercent;       //Процент завершения с ошибкой
+
+    @Schema(description = "Количество выполненых методов")
+    private long countWorks;            //Количество выполненых методов
 }
