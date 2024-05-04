@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="initial_0002_01" author="gorchanyuk">
+        <createTable tableName="execution_times">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_execution_times"/>
+            </column>
+            <column name="method_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execution_time" type="BIGINT"/>
+            <column name="created_at" type="DATETIME"/>
+            <column name="is_successfully" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_async" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="initial_0002_02" author="gorchanyuk">
+        <addUniqueConstraint columnNames="name" constraintName="uc_methods_name" tableName="methods"/>
+    </changeSet>
+    <changeSet id="initial_0002_03" author="gorchanyuk">
+        <addForeignKeyConstraint baseColumnNames="method_id" baseTableName="execution_times"
+                                 constraintName="FK_EXECUTION_TIMES_ON_METHOD" referencedColumnNames="id"
+                                 referencedTableName="methods"/>
+    </changeSet>
+</databaseChangeLog>
