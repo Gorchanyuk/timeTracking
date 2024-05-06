@@ -35,7 +35,7 @@ public class StatisticsControllerTest {
 
     @SneakyThrows
     @BeforeEach
-    private void setUp() {
+    public void setUp() {
         expectedStatistics = Statistics.builder()
                 .averageExecutionTime(0.13)
                 .minExecutionTime(0)
