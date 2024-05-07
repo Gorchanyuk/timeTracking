@@ -10,7 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import t1.gorchanyuk.timetracking.dto.ExecutionTimeDto;
 import t1.gorchanyuk.timetracking.dto.MethodDto;
-import t1.gorchanyuk.timetracking.mapper.ExecutionTimeFromSignatureMapper;
+import t1.gorchanyuk.timetracking.mapper.ExecutionTimeMapper;
 import t1.gorchanyuk.timetracking.mapper.MethodMapper;
 import t1.gorchanyuk.timetracking.service.ExecutionTimeService;
 
@@ -26,7 +26,7 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class AsyncTimeTrackingAspect {
 
-    private final ExecutionTimeFromSignatureMapper mapper;
+    private final ExecutionTimeMapper mapper;
     private final ExecutionTimeService executionTimeService;
 
     private final MethodMapper methodMapper;

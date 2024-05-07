@@ -20,7 +20,7 @@ public interface StatisticsControllerApi {
                                                        @PathVariable long methodId);
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = "Получение общей статистики",
+    @Operation(summary = "Получение статистики по типу аннотации",
             description = """
                     Позволяет получить статистику для методов помеченных аннотацией :\s
                     1)  @TrackTime - если значение параметра async = false
