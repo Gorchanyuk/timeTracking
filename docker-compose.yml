@@ -13,7 +13,8 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - database
+      database:
+        condition: service_healthy
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/t1
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -29,4 +30,8 @@ services:
       POSTGRES_DB: t1
     volumes:
       - postgres-gorch:/var/lib/postgresql/data
-
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 20s
+      timeout: 10s
+      retries: 5
