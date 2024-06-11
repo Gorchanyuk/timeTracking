@@ -4,7 +4,7 @@ volumes:
 
 services:
   time_tracking:
-    image: 'time_tracking:latest'
+    image: 'bezbasheniy/time_tracking:latest'
     build:
       context: .
 

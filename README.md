@@ -18,3 +18,10 @@
 Для запуска проекта в docker контейнере нужно выполнить команду:
 `docker compose up -d`
 
+## Запуск проекта в minikube (kubernetes)
+
+- Создайте кластер с помощью команды: `minikube start`
+- Закиньте сервисы в кластер с помощью команды: `kubectl apply -f kube`
+- Получить актуальный адрес для просмотра API: `minikube service time-tracking --url`
+- Удалить приложение из кластера: `kubectl delete -f kube`
+- Для остановки кластера используйте команду: `minikube stop`

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: time-tracking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: time-tracking
+  template:
+    metadata:
+      labels:
+        app: time-tracking
+    spec:
+      containers:
+        - name: app
+          image: bezbasheniy/time_tracking:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/t1
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: postgres
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: time-tracking
+spec:
+  selector:
+    app: time-tracking
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
